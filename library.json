@@ -1,0 +1,20 @@
+{
+    "name": "BlankPlatformIOLibrary",
+    "version": "0.1",
+    "description": "Blank PlatformIO Library",
+    "keywords": "",
+    "repository":
+    {
+      "type": "git",
+      "url": "https://github.com/Modac/BlankPlatformIOLibrary.git"
+    },
+    "authors":
+    [
+      {
+        "name": "Pascal Goldbrunner"
+      }
+    ],
+    "license": "MIT",
+    "frameworks": "*",
+    "platforms": "*"
+  }

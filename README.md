@@ -1,0 +1,2 @@
+# BlankPlatformIOLibrary
+Blank PlatformIO Library
