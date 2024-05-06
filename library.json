@@ -1,12 +1,12 @@
 {
-    "name": "BlankPlatformIOLibrary",
+    "name": "WomoComm",
     "version": "0.1",
-    "description": "Blank PlatformIO Library",
-    "keywords": "",
+    "description": "Library for everthing CAN communication related for the Womo",
+    "keywords": ["womo", "can"],
     "repository":
     {
       "type": "git",
-      "url": "https://github.com/Modac/BlankPlatformIOLibrary.git"
+      "url": "https://github.com/Modac/WomoComm.git"
     },
     "authors":
     [
