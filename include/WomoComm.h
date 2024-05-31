@@ -28,6 +28,9 @@ namespace WomoComm {
         // If can_dlc = 1:
         //   can_data[0] = 0: turn pump off / 1: turn pump on 
         constexpr canid_t FreshWaterPump =        (0b00000011<<21)|(0b00000000000000001<<4) | CAN_EFF_FLAG;
+        // can_dlc = 1: 
+        //   can_data[0] = 0: pump is off / 1: pump is on
+        constexpr canid_t FreshWaterPumpStatus =  (0b00000011<<21)|(0b00000000000000010<<4) | CAN_EFF_FLAG;
 
         // Clears the sender id bits from a CAN ID (4 lsb)
         inline canid_t stripSender(canid_t CAN_ID) {
