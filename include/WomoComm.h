@@ -9,15 +9,19 @@ namespace WomoComm {
 // 8 bits: category, 17 bits: id, 4 bit: sender
 // "0b00000000'00000000000000000'0000"
     namespace CAN_ID {
-        constexpr canid_t ValveCommand = 0b00001000000000000000010000000 | CAN_EFF_FLAG;
-        constexpr canid_t TrittCommand = 0b00001000000000000000010010000 | CAN_EFF_FLAG;
-        constexpr canid_t GasLevelConfig = 0b00001000000000000001000010000 | CAN_EFF_FLAG;
-        constexpr canid_t GasLevel = 0b00001000000000000001000100000 | CAN_EFF_FLAG;
-        constexpr canid_t WasteLevelConfig = 0b00001000000000000001001000000 | CAN_EFF_FLAG;
-        constexpr canid_t WasteLevel = 0b00001000000000000001001010000 | CAN_EFF_FLAG;
+        // Category: 0b00001000 = 8: Unten
+        constexpr canid_t ValveCommand =        (0b00001000<<21)|(0b00000000000001000<<4) | CAN_EFF_FLAG;
+        constexpr canid_t TrittCommand =        (0b00001000<<21)|(0b00000000000001001<<4) | CAN_EFF_FLAG;
+        constexpr canid_t GasLevelConfig =      (0b00001000<<21)|(0b00000000000100001<<4) | CAN_EFF_FLAG;
+        constexpr canid_t GasLevel =            (0b00001000<<21)|(0b00000000000100010<<4) | CAN_EFF_FLAG;
+        constexpr canid_t WasteLevelConfig =    (0b00001000<<21)|(0b00000000000100100<<4) | CAN_EFF_FLAG;
+        constexpr canid_t WasteLevel =          (0b00001000<<21)|(0b00000000000100101<<4) | CAN_EFF_FLAG;
 
-        constexpr canid_t KitchenLight = 0b00000010000000000000000010000 | CAN_EFF_FLAG;
-        constexpr canid_t MainLight = 0b00000010000000000000000100000 | CAN_EFF_FLAG;
+        // Category: 0b00000010 = 2: Lighting
+        // If can_dlc==0 the light should be toggled
+        // If can_dlc>0 the pwm values should be updated from the data array. Every byte is one pwm value.
+        constexpr canid_t KitchenLight =        (0b00000010<<21)|(0b00000000000000001<<4) | CAN_EFF_FLAG;
+        constexpr canid_t MainLight =           (0b00000010<<21)|(0b00000000000000010<<4) | CAN_EFF_FLAG;
 
         // Clears the sender id bits from a CAN ID (4 lsb)
         inline canid_t stripSender(canid_t CAN_ID) {
