@@ -23,6 +23,12 @@ namespace WomoComm {
         constexpr canid_t KitchenLight =        (0b00000010<<21)|(0b00000000000000001<<4) | CAN_EFF_FLAG;
         constexpr canid_t MainLight =           (0b00000010<<21)|(0b00000000000000010<<4) | CAN_EFF_FLAG;
 
+        // Category: 0b00000011 = 3: Fresh Water
+        // If can_dlc = 0: Toggle pump
+        // If can_dlc = 1:
+        //   can_data[0] = 0: turn pump off / 1: turn pump on 
+        constexpr canid_t FreshWaterPump =        (0b00000011<<21)|(0b00000000000000001<<4) | CAN_EFF_FLAG;
+
         // Clears the sender id bits from a CAN ID (4 lsb)
         inline canid_t stripSender(canid_t CAN_ID) {
             return CAN_ID & ~0xF;
