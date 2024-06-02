@@ -18,10 +18,16 @@ namespace WomoComm {
         constexpr canid_t WasteLevel =          (0b00001000<<21)|(0b00000000000100101<<4) | CAN_EFF_FLAG;
 
         // Category: 0b00000010 = 2: Lighting
+        // Lighting action message
         // If can_dlc==0 the light should be toggled
         // If can_dlc>0 the pwm values should be updated from the data array. Every byte is one pwm value.
         constexpr canid_t KitchenLight =        (0b00000010<<21)|(0b00000000000000001<<4) | CAN_EFF_FLAG;
         constexpr canid_t MainLight =           (0b00000010<<21)|(0b00000000000000010<<4) | CAN_EFF_FLAG;
+        // Lighting status message
+        // can_dlc==1
+        // data[0] = 0: light is off, 1: light is on
+        constexpr canid_t KitchenLightStatus =        (0b00000010<<21)|(0b00000000000000011<<4) | CAN_EFF_FLAG;
+        constexpr canid_t MainLightStatus =           (0b00000010<<21)|(0b00000000000000100<<4) | CAN_EFF_FLAG;
 
         // Category: 0b00000011 = 3: Fresh Water
         // If can_dlc = 0: Toggle pump
