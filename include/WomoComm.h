@@ -10,33 +10,33 @@ namespace WomoComm {
 // "0b00000000'00000000000000000'0000"
     namespace CAN_ID {
         // Category: 0b00001000 = 8: Unten
-        constexpr canid_t ValveCommand =        (0b00001000<<21)|(0b00000000000001000<<4) | CAN_EFF_FLAG;
-        constexpr canid_t TrittCommand =        (0b00001000<<21)|(0b00000000000001001<<4) | CAN_EFF_FLAG;
-        constexpr canid_t GasLevelConfig =      (0b00001000<<21)|(0b00000000000100001<<4) | CAN_EFF_FLAG;
-        constexpr canid_t GasLevel =            (0b00001000<<21)|(0b00000000000100010<<4) | CAN_EFF_FLAG;
-        constexpr canid_t WasteLevelConfig =    (0b00001000<<21)|(0b00000000000100100<<4) | CAN_EFF_FLAG;
-        constexpr canid_t WasteLevel =          (0b00001000<<21)|(0b00000000000100101<<4) | CAN_EFF_FLAG;
+        constexpr canid_t ValveCommand =        (0b00001000UL<<21)|(0b00000000000001000UL<<4) | CAN_EFF_FLAG;
+        constexpr canid_t TrittCommand =        (0b00001000UL<<21)|(0b00000000000001001UL<<4) | CAN_EFF_FLAG;
+        constexpr canid_t GasLevelConfig =      (0b00001000UL<<21)|(0b00000000000100001UL<<4) | CAN_EFF_FLAG;
+        constexpr canid_t GasLevel =            (0b00001000UL<<21)|(0b00000000000100010UL<<4) | CAN_EFF_FLAG;
+        constexpr canid_t WasteLevelConfig =    (0b00001000UL<<21)|(0b00000000000100100UL<<4) | CAN_EFF_FLAG;
+        constexpr canid_t WasteLevel =          (0b00001000UL<<21)|(0b00000000000100101UL<<4) | CAN_EFF_FLAG;
 
         // Category: 0b00000010 = 2: Lighting
         // Lighting action message
         // If can_dlc==0 the light should be toggled
         // If can_dlc>0 the pwm values should be updated from the data array. Every byte is one pwm value.
-        constexpr canid_t KitchenLight =        (0b00000010<<21)|(0b00000000000000001<<4) | CAN_EFF_FLAG;
-        constexpr canid_t MainLight =           (0b00000010<<21)|(0b00000000000000010<<4) | CAN_EFF_FLAG;
+        constexpr canid_t KitchenLight =        (0b00000010UL<<21)|(0b00000000000000001UL<<4) | CAN_EFF_FLAG;
+        constexpr canid_t MainLight =           (0b00000010UL<<21)|(0b00000000000000010UL<<4) | CAN_EFF_FLAG;
         // Lighting status message
         // can_dlc==1
         // data[0] = 0: light is off, 1: light is on
-        constexpr canid_t KitchenLightStatus =        (0b00000010<<21)|(0b00000000000000011<<4) | CAN_EFF_FLAG;
-        constexpr canid_t MainLightStatus =           (0b00000010<<21)|(0b00000000000000100<<4) | CAN_EFF_FLAG;
+        constexpr canid_t KitchenLightStatus =        (0b00000010UL<<21)|(0b00000000000000011UL<<4) | CAN_EFF_FLAG;
+        constexpr canid_t MainLightStatus =           (0b00000010UL<<21)|(0b00000000000000100UL<<4) | CAN_EFF_FLAG;
 
         // Category: 0b00000011 = 3: Fresh Water
         // If can_dlc = 0: Toggle pump
         // If can_dlc = 1:
         //   can_data[0] = 0: turn pump off / 1: turn pump on 
-        constexpr canid_t FreshWaterPump =        (0b00000011<<21)|(0b00000000000000001<<4) | CAN_EFF_FLAG;
+        constexpr canid_t FreshWaterPump =        (0b00000011UL<<21)|(0b00000000000000001UL<<4) | CAN_EFF_FLAG;
         // can_dlc = 1: 
         //   can_data[0] = 0: pump is off / 1: pump is on
-        constexpr canid_t FreshWaterPumpStatus =  (0b00000011<<21)|(0b00000000000000010<<4) | CAN_EFF_FLAG;
+        constexpr canid_t FreshWaterPumpStatus =  (0b00000011UL<<21)|(0b00000000000000010UL<<4) | CAN_EFF_FLAG;
 
         // Clears the sender id bits from a CAN ID (4 lsb)
         inline canid_t stripSender(canid_t CAN_ID) {
