@@ -11,11 +11,15 @@ namespace WomoComm {
     namespace CAN_ID {
         // Category: 0b00001000 = 8: Unten
         constexpr canid_t ValveCommand =        (0b00001000UL<<21)|(0b00000000000001000UL<<4) | CAN_EFF_FLAG;
-        constexpr canid_t TrittCommand =        (0b00001000UL<<21)|(0b00000000000001001UL<<4) | CAN_EFF_FLAG;
+        constexpr canid_t SlidestepCommand =    (0b00001000UL<<21)|(0b00000000000001001UL<<4) | CAN_EFF_FLAG;
         constexpr canid_t GasLevelConfig =      (0b00001000UL<<21)|(0b00000000000100001UL<<4) | CAN_EFF_FLAG;
         constexpr canid_t GasLevel =            (0b00001000UL<<21)|(0b00000000000100010UL<<4) | CAN_EFF_FLAG;
         constexpr canid_t WasteLevelConfig =    (0b00001000UL<<21)|(0b00000000000100100UL<<4) | CAN_EFF_FLAG;
         constexpr canid_t WasteLevel =          (0b00001000UL<<21)|(0b00000000000100101UL<<4) | CAN_EFF_FLAG;
+        // can_dlc=1
+        // data[0] = 0: lost interest in the levels, 1: got interested in the levels
+        constexpr canid_t LevelInterest =       (0b00001000UL<<21)|(0b00000000000100110UL<<4) | CAN_EFF_FLAG;
+        
 
         // Category: 0b00000010 = 2: Lighting
         // Lighting action message
