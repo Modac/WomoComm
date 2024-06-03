@@ -13,8 +13,20 @@ namespace WomoComm {
         constexpr canid_t ValveCommand =        (0b00001000UL<<21)|(0b00000000000001000UL<<4) | CAN_EFF_FLAG;
         constexpr canid_t SlidestepCommand =    (0b00001000UL<<21)|(0b00000000000001001UL<<4) | CAN_EFF_FLAG;
         constexpr canid_t GasLevelConfig =      (0b00001000UL<<21)|(0b00000000000100001UL<<4) | CAN_EFF_FLAG;
+        // can_dlc = 3
+        // data[0]: status of the measurement, 1=Error | 3=OK
+        // data[1]: msbs of value
+        // data[2]: lsbs of value
         constexpr canid_t GasLevel =            (0b00001000UL<<21)|(0b00000000000100010UL<<4) | CAN_EFF_FLAG;
         constexpr canid_t WasteLevelConfig =    (0b00001000UL<<21)|(0b00000000000100100UL<<4) | CAN_EFF_FLAG;
+        // can_dlc=7
+        // data[0]: status of the measurements, 1=Error | 3=OK, bit 0 & 1 for value 1, bit 2 & 3 for value 2, bit 4 & 5 for value 3
+        // data[1]: msbs of value 1
+        // data[2]: lsbs of value 1
+        // data[3]: msbs of value 2
+        // data[4]: lsbs of value 2
+        // data[5]: msbs of value 3
+        // data[6]: lsbs of value 3
         constexpr canid_t WasteLevel =          (0b00001000UL<<21)|(0b00000000000100101UL<<4) | CAN_EFF_FLAG;
         // can_dlc=1
         // data[0] = 0: lost interest in the levels, 1: got interested in the levels
@@ -41,6 +53,11 @@ namespace WomoComm {
         // can_dlc = 1: 
         //   can_data[0] = 0: pump is off / 1: pump is on
         constexpr canid_t FreshWaterPumpStatus =  (0b00000011UL<<21)|(0b00000000000000010UL<<4) | CAN_EFF_FLAG;
+        // can_dlc = 3
+        // data[0]: status of the measurement, 1=Error | 3=OK
+        // data[1]: msbs of value
+        // data[2]: lsbs of value
+        constexpr canid_t FreshWaterLevel =  (0b00000011UL<<21)|(0b00000000000000011UL<<4) | CAN_EFF_FLAG;
 
         // Clears the sender id bits from a CAN ID (4 lsb)
         inline canid_t stripSender(canid_t CAN_ID) {
