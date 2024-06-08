@@ -86,6 +86,14 @@ namespace WomoComm {
             return stripSender(CAN_ID) | (Sender_ID & 0xF);
         }
 
+        /// @brief Check if CanId is from specified category
+        /// @param canId The can message id to check
+        /// @param category The category to check against, must already be shifted
+        /// @return 
+        inline boolean isCanIdCategory(canid_t canId, canid_t category){
+            return (canId&(0b11111111UL<<21)) == (category)
+        }
+
     }
 
     namespace Sender_ID {
