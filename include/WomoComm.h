@@ -91,7 +91,7 @@ namespace WomoComm {
         /// @param category The category to check against, must already be shifted
         /// @return 
         inline boolean isCanIdCategory(canid_t canId, canid_t category){
-            return (canId&(0b11111111UL<<21)) == (category)
+            return (canId&(0b11111111UL<<21)) == (category);
         }
 
     }
