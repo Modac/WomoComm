@@ -63,8 +63,9 @@ namespace WomoComm {
         // can_dlc = 1: 
         //   can_data[0] = 0: pump is off / 1: pump is on
         constexpr canid_t FreshWaterPumpStatus =    CATEGORY::FreshWater_CANID|(0b00000000000000010UL<<4) | CAN_EFF_FLAG;
-        // can_dlc = 1
-        // data[1]: unsigned level in percent or 0xFF if error or 0xFE if no level resistor
+        // can_dlc = 2
+        // data[0]: unsigned level in percent or UINT8_MAX (0xFF) if error or UINT8_MAX-1 (0xFE) if no level resistor
+        // data[1]: uint8_t | remaining liter estimation
         constexpr canid_t FreshWaterLevel =         CATEGORY::FreshWater_CANID|(0b00000000000000011UL<<4) | CAN_EFF_FLAG;
 
         // Clears the sender id bits from a CAN ID (4 lsb)
