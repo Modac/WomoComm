@@ -26,12 +26,18 @@ namespace WomoComm {
 
         constexpr canid_t ValveCommand =        CATEGORY::Below_CANID|(0b00000000000001000UL<<4) | CAN_EFF_FLAG;
         constexpr canid_t SlidestepCommand =    CATEGORY::Below_CANID|(0b00000000000001001UL<<4) | CAN_EFF_FLAG;
+        // can_dlc = 3
+        // data[0]: reserved
+        // (((uint16_t)data[1]) << 8) | data[2]: interval of level sending in ms, minimum of 1000 or 0 to disable
         constexpr canid_t GasLevelConfig =      CATEGORY::Below_CANID|(0b00000000000100001UL<<4) | CAN_EFF_FLAG;
         // can_dlc = 3
         // data[0]: status of the measurement, 1=Error | 3=OK
         // data[1]: msbs of value
         // data[2]: lsbs of value
         constexpr canid_t GasLevel =            CATEGORY::Below_CANID|(0b00000000000100010UL<<4) | CAN_EFF_FLAG;
+        // can_dlc = 3
+        // data[0]: reserved
+        // (((uint16_t)data[1]) << 8) | data[2]: interval of level sending in ms, minimum of 1000 or 0 to disable
         constexpr canid_t WasteLevelConfig =    CATEGORY::Below_CANID|(0b00000000000100100UL<<4) | CAN_EFF_FLAG;
         // can_dlc=7
         // data[0]: status of the measurements, 1=Error | 3=OK, bit 0 & 1 for value 1, bit 2 & 3 for value 2, bit 4 & 5 for value 3
